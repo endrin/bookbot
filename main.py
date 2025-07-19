@@ -2,6 +2,7 @@ import os
 import string
 
 from collections import Counter
+from stats import get_num_words
 
 
 example = "books/frankenstein.txt"
@@ -28,8 +29,8 @@ def print_report_on(src: os.PathLike):
     with open(src) as f:
         content = f.read()
 
-    words = content.split()
-    print(f"{len(words)} words found in the document")
+    num_words = get_num_words(content)
+    print(f"{num_words} words found in the document")
     print()
 
     freqs = frequencies(content)

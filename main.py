@@ -12,13 +12,6 @@ def main():
     print_report_on(example)
 
 
-def frequencies(line: str) -> Counter[str]:
-    normalized_line = line.strip().lower()
-    chars = (c for c in normalized_line if c in string.ascii_lowercase)
-
-    return Counter(chars)
-
-
 def print_report_on(src: os.PathLike):
     def second_in_pair(p: tuple[str, int]) -> int:
         (_, snd) = p
@@ -33,7 +26,7 @@ def print_report_on(src: os.PathLike):
     print(f"{num_words} words found in the document")
     print()
 
-    freqs = frequencies(content)
+    freqs = get_frequencies(content)
     for char, amount in sorted(freqs.items(), key=second_in_pair, reverse=True):
         print(f"The '{char}' character was found {amount} times")
 

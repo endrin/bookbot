@@ -1,14 +1,19 @@
 import os
-import string
+import sys
 
-from collections import Counter
-from stats import get_num_words
+from stats import get_frequencies, get_num_words
 
 
-example = "books/frankenstein.txt"
+def usage():
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
 
 
 def main():
+    if len(sys.argv) < 2:
+        usage()
+
+    example = sys.argv[1]
     print_report_on(example)
 
 

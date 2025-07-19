@@ -22,20 +22,22 @@ def print_report_on(src: os.PathLike):
         (_, snd) = p
         return snd
 
-    print(f"--- Begin report of {src} ---")
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {src}...")
 
     with open(src) as f:
         content = f.read()
 
     num_words = get_num_words(content)
-    print(f"{num_words} words found in the document")
-    print()
+    print("----------- Word Count ----------")
+    print(f"Found {num_words} total words")
 
     freqs = get_frequencies(content)
+    print("--------- Character Count -------")
     for char, amount in sorted(freqs.items(), key=second_in_pair, reverse=True):
-        print(f"The '{char}' character was found {amount} times")
+        print(f"{char}: {amount}")
 
-    print("--- End report ---")
+    print("============= END ===============")
 
 
 main()
